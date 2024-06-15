@@ -27,20 +27,20 @@ class BDD:
   def init(self, info_init, init_type):
       for key, value in info_init.items():
         if init_type == 'new':
-          puissance = self.compute_puissance(classe = value.get('classe'), tour=value.get('tour'),
-                                            nb_bonus = value.get('bonus'), puissance_base = value.get('puissance_base'))
+          puissance = self.compute_puissance(classe = value.classe, tour=value.tour,
+                                            nb_bonus = value.bonus, puissance_base = value.puissance_base)
         elif init_type == 'existing encode':
-          puissance_encodee = value.get('puissance')
+          puissance_encodee = value.puissance
           puissance_bytes = puissance_encodee.encode('utf-8')
           puissance_decodee = base64.b64decode(puissance_bytes)
           puissance = int(puissance_decodee.decode('utf-8'))
         elif init_type == 'existing':
-          puissance = value.get('puissance')
-        new_joueur = Joueur(key, value.get('classe'), puissance, nb_atout=3, state=(0,0,0), deploye = 0, armee = value.get('armee'))
+          puissance = value.puissance
+        new_joueur = Joueur(key, value.classe, puissance, nb_atout=3, state=(0,0,0), deploye = 0, armee = value.armee)
         self.dict_joueur[key] = new_joueur
-        if value.get('armee') not in self.dict_armee:
-          self.dict_armee[value.get('armee')] = Armee(value.get('armee'))
-        self.dict_armee[value.get('armee')].add_joueur(new_joueur)
+        if value.armee not in self.dict_armee:
+          self.dict_armee[value.armee] = Armee(value.armee)
+        self.dict_armee[value.armee].add_joueur(new_joueur)
 
 
   def compute_puissance(self, classe, tour, nb_bonus, puissance_base=0):

@@ -32,12 +32,12 @@ class JoueurInfo(BaseModel):
         example=1,
         description="Le numéro de l'armée auquel appartient le joueur, doit être compris entre 1 et 10."
     )
-    tour: conint(ge=1, le=100) = Field(
+    tour: conint(ge=0, le=100) = Field(
         ...,
         example=3,
         description="Le numéro du tour actuel, doit être compris entre 1 et 100."
     )
-    bonus: conint(ge=1, le=10) = Field(
+    bonus: conint(ge=0, le=10) = Field(
         ...,
         example=0,
         description="Le nombre de bonus du joueur, doit être compris entre 1 et 10."
