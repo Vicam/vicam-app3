@@ -1,6 +1,7 @@
 import base64
 from math import floor
 from random import randint
+from schemas.init_info import JoueurResponse
 
 class Joueur:
   def __init__(self, name, classe, puissance, nb_atout=3, state=(0,0,0), deploye = 0, armee = 0):
@@ -79,3 +80,17 @@ class Joueur:
       else :
         text_puissance_public = f"> {self.puissance_public}"
         print(f"{self.name} ({text_puissance_public}): {text_zone}")
+
+  def to_joueur_response(self):
+      return JoueurResponse(
+          name=self.name,
+          classe=self.classe,
+          puissance=self.puissance,
+          puissance_encodee=self.puissance_encodee,
+          puissance_public=self.puissance_public,
+          state=self.state,
+          legere_blessure=self.legere_blessure,
+          blessure=self.blessure,
+          KO=self.KO,
+          nb_atout=self.nb_atout
+      )

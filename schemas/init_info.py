@@ -64,3 +64,15 @@ class InitBddBody(BaseModel):
         ...,
         description="Contient les informations de chaque joueur."
     )
+
+class JoueurResponse(BaseModel):
+    name: str
+    classe: str
+    puissance: int
+    puissance_encodee: str
+    puissance_public: int
+    state: tuple
+    legere_blessure: int
+    blessure: int
+    KO: int
+    nb_atout: int
