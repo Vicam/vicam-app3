@@ -48,8 +48,8 @@ class JoueurInfo(BaseModel):
         description="La puissance de base du joueur, exprimée en entier."
     )
 
-class InitInfo(BaseModel):
-    info_init: Dict[str, JoueurInfo] = Field(
+class InfoInit(BaseModel):
+    players: Dict[str, JoueurInfo] = Field(
         ...,
         description="Un dictionnaire contenant les informations de chaque joueur."
     )
@@ -60,7 +60,7 @@ class InitBddBody(BaseModel):
         example="new",
         description="Le type d'initialisation, peut être 'new', 'existing encode', ou 'existing'."
     )
-    info_init: InitInfo = Field(
+    info_init: InfoInit = Field(
         ...,
-        description="Un dictionnaire contenant les informations de chaque joueur."
+        description="Contient les informations de chaque joueur."
     )
