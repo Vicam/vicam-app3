@@ -35,12 +35,12 @@ class JoueurInfo(BaseModel):
     tour: conint(ge=0, le=100) = Field(
         ...,
         example=3,
-        description="Le numéro du tour actuel, doit être compris entre 1 et 100."
+        description="Le numéro du tour actuel, doit être compris entre 0 et 100."
     )
     bonus: conint(ge=0, le=10) = Field(
         ...,
         example=0,
-        description="Le nombre de bonus du joueur, doit être compris entre 1 et 10."
+        description="Le nombre de bonus du joueur, doit être compris entre 0 et 10."
     )
     puissance_base: int = Field(
         ...,
@@ -53,8 +53,14 @@ class InitInfo(BaseModel):
         ...,
         description="Un dictionnaire contenant les informations de chaque joueur."
     )
+
+class InitBddBody(BaseModel):
     init_type: InitType = Field(
         ...,
         example="new",
         description="Le type d'initialisation, peut être 'new', 'existing encode', ou 'existing'."
+    )
+    info_init: InitInfo = Field(
+        ...,
+        description="Un dictionnaire contenant les informations de chaque joueur."
     )

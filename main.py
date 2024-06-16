@@ -1,7 +1,7 @@
 from typing import Optional
 from fastapi import FastAPI, HTTPException
 from models import BDD
-from schemas.init_info import InitInfo
+from schemas.init_info import InitBddBody
 
 app = FastAPI()
 
@@ -22,7 +22,7 @@ def add(a: float, b: float):
     return {"result": a + b}
 
 @app.post("/init_bdd")
-async def init_bdd(init_info: InitInfo):
+async def init_bdd(init_info: InitBddBody):
     try:
         bdd = BDD()
         bdd.init(init_info.info_init, init_type=init_info.init_type)
