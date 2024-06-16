@@ -1,5 +1,6 @@
 import base64
 from random import randint
+from models import Armee, Joueur 
 
 class BDD:
     def __init__(self):
@@ -22,7 +23,7 @@ class BDD:
         }
 
     def init(self, info_init, init_type):
-        players = info_init.get('players', {})
+        players = info_init.players
         for key, value in players.items():
             if init_type == 'new':
                 puissance = self.compute_puissance(classe=value.classe, tour=value.tour,
